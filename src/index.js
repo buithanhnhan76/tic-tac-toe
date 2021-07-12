@@ -1,13 +1,20 @@
+// React for React.createElement()
 import React from 'react';
+// ReactDom for render
 import ReactDOM from 'react-dom';
+// reset css
+import './reset.css';
+// index.css for styles
 import './index.css';
 
-function Square (props){
 
+// represent each square on the screen, 9 square
+function Square (props){
       return (
         <button className="square" 
         onClick={props.onClick}>
           {props.value}
+          {/* X,O or null */}
         </button>
       );
 }
@@ -22,22 +29,24 @@ function Square (props){
   
     render() {
       return (
-        <div>
-          <div className="board-row">
-            {this.renderSquare(0)}
-            {this.renderSquare(1)}
-            {this.renderSquare(2)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(3)}
-            {this.renderSquare(4)}
-            {this.renderSquare(5)}
-          </div>
-          <div className="board-row">
-            {this.renderSquare(6)}
-            {this.renderSquare(7)}
-            {this.renderSquare(8)}
-          </div>
+        // three rows of square, each row has three squares
+          <div className="container mt-5">
+            <h1>This Is A Caro Game !</h1>
+            <div className="row">
+              <div className="col">{this.renderSquare(0)}</div>
+              <div className="col">{this.renderSquare(1)}</div>
+              <div className="col">{this.renderSquare(2)}</div>
+            </div>
+            <div className="row">
+              <div className="col">{this.renderSquare(3)}</div>
+              <div className="col">{this.renderSquare(4)}</div>
+              <div className="col">{this.renderSquare(5)}</div>
+            </div>
+            <div className="row">
+              <div className="col">{this.renderSquare(6)}</div>
+              <div className="col">{this.renderSquare(7)}</div>
+              <div className="col">{this.renderSquare(8)}</div>
+            </div>
         </div>
       );
     }
@@ -47,6 +56,7 @@ function Square (props){
     constructor(props){
       super(props);
       this.state = {
+        // first, history: [{squares:[null*9]}]
         history: [{
           squares: Array(9).fill(null),
         }],
@@ -82,6 +92,7 @@ function Square (props){
       const winner = calculateWinner(current.squares);
 
       const moves = history.map((step, move) => {
+        console.log(move);
         const desc = move ? 
           'Go to move #' + move :
           'Go to game start';
@@ -106,8 +117,9 @@ function Square (props){
             />
           </div>
           <div className="game-info">
-            <div>{status}</div>
+            <div className="container">{status}
             <ol>{moves}</ol>
+            </div>
           </div>
         </div>
       );
@@ -122,8 +134,11 @@ function Square (props){
     document.getElementById('root')
   );
   
+
+  // Caculate winner: return x, y or null
   function calculateWinner (squares) {
 
+    // win's case
     const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -135,8 +150,12 @@ function Square (props){
     [2, 4, 6],
     ];
 
+
     for(let i = 1; i < lines.length;i++){
+        // pick index a,b,c from each case
         const [a,b,c] = lines[i];
+
+        // check if win
         if(squares[a] && squares[a] === squares[b] && squares[a] === squares[c]){
             return squares[a];
         } 
