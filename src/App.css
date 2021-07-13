@@ -1,0 +1,29 @@
+.square{
+  color: #fff;
+  border: 1px solid gray;
+  /* make button side by side */
+  float: left;
+  padding: 0px;
+  width: 80px;
+  height: 80px;
+  text-align: center;
+  margin-right: 3px;
+  margin-top: 3px;
+  font-size: 40px;
+  background-image: linear-gradient(to top, rgb(73,132,180), rgb(97,155,203));
+  box-shadow: 1px 2px black;
+}
+
+.game {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+ }
+
+ .game-info{
+   margin-left: 1rem;
+ }
+ 
+ 
