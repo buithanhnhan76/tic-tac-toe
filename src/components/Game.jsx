@@ -66,7 +66,7 @@ class Game extends Component {
             // if move is true, then print go to ..., otherwise print start the game ( move : 0 )
             const desc = move ? 'Go to #' + move : 'Start the game';
             return (
-                <li key={move}>
+                <li key={move} className="mt-1">
                     {/* when you click, then jump to step */}
                     <button onClick={() => {this.jumpTo(move)}}>
                     {/* desc */}

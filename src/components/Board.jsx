@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Square from './Square';
 
 class Board extends Component {
-    // like renderSquare(1)
+    // renderSquare(1)
     renderSquare(i){
         // received squares by props
         // raise an event with i when click
@@ -10,7 +10,7 @@ class Board extends Component {
     }
     render() { 
         return ( 
-            <div>
+            <div className="container">
                 <div className="border-row">
                     {this.renderSquare(0)}
                     {this.renderSquare(1)}
